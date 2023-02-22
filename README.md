@@ -23,10 +23,7 @@ The team at Hypercolor uses this package to parse and annotate environment varia
 
 ## Prerequisites
 - `.env` file in the root of your project
-
-#### *Compatible API Routing Architecture Overview*
-- In order for the programmatic parsing of API routes and their associated documentation, routes need to be mounted into a specific format. Please visit the [example](#examples) section for more information and code examples.
-
+- Node.js
 
 ## Usage
 ### `.env` file:
