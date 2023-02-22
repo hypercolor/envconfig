@@ -1,0 +1,42 @@
+{
+  "name": "@hypercolor/envconfig",
+  "version": "0.0.1",
+  "description": "This is a tool used by the Hypercolor team for parsing and annoting environment variables into a shared module.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "LICENSE"
+  ],
+  "private": false,
+  "prepublish": "tsc --build --clean && tsc --build",
+  "scripts": {
+    "build": "tsc --build --clean && tsc --build"
+  },
+  "keywords": [
+    "env",
+    "config",
+    "environment",
+    "variables",
+    "dotenv",
+    ".env"
+  ],
+  "author": "Seth Uschuk",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.14.0",
+    "ts-loader": "^9.4.2",
+    "tslint": "^6.1.3",
+    "tslint-loader": "^3.5.4",
+    "typescript": "^4.9.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hypercolor/envconfig.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hypercolor/envconfig/issues"
+  },
+  "homepage": "https://github.com/hypercolor/envconfig#readme"
+}
