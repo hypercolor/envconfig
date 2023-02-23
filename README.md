@@ -12,7 +12,13 @@
     - [Organization Repository](#organization-repository)
 
 ## Introduction
-The team at Hypercolor uses this package to parse and annotate environment variables into a shared module. Linkage is made with `process.env`
+Use decorators to pull in configuration data from environment variables or volume mounts. Use the "fail fast" principle to ensure that all required variables are present before the application starts.
+
+Adding the `@required` decorator to a variable `HOST_URL` will do the following:
+* If `process.env.HOST_URL` is defined, use that value
+* If a volume mount is present at `/etc/config/env`, use that value
+* If a volume mount is present at `/etc/config/sec`, use that value
+* If none of the above are present, throw an error
 
 ## Installation
 - NPM
@@ -20,18 +26,13 @@ The team at Hypercolor uses this package to parse and annotate environment varia
 - Yarn
     - `yarn add @hypercolor/envconfig`
 
-
-## Prerequisites
-- `.env` file in the root of your project
-- Node.js
-
 ## Usage
 ### `.env` file:
 ``` bash
 ENVIRONMENT_NAME=development
 ```
 ### Parsed Config Variables:
-```javascript
+```typescript
 import {required} from '@hypercolor/envconfig';
 
 export class ConfigVariables {
@@ -39,25 +40,9 @@ export class ConfigVariables {
 }
 
 ```
-### Invocation:
-```javascript
-import ConfigVariables from './ConfigVariables';
-
-export class Server {
-    public static async start() {
-        await DatabaseManager.connect({
-          name: ConfigVariables.ENVIRONMENT_NAME,
-          ...
-        });
-    }
-}
-```
 
 
 ## More Information
-#### Toolchain
-- Node.js
-- TypeScript
 
 #### [Project Repository](https://github.com/hypercolor/envconfig)
 
