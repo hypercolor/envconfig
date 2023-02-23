@@ -1,4 +1,4 @@
-# Hypercolor Envconfig
+# @hypercolor/envconfig
 
 ## Table of Contents
 - [Introduction](#introduction)
