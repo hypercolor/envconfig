@@ -1,6 +1,6 @@
 {
   "name": "@hypercolor/envconfig",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "Use decorators to pull in configuration data from environment variables or volume mounts.",
   "main": "index.js",
   "types": "index.d.ts",
@@ -12,7 +12,8 @@
   "private": false,
   "prepublish": "tsc --build --clean && tsc --build",
   "scripts": {
-    "build": "tsc --build --clean && tsc --build"
+    "build": "tsc --build --clean && tsc --build",
+    "build_publish": "npm run build && npm publish"
   },
   "keywords": [
     "env",
