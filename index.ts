@@ -47,3 +47,12 @@ export function requiredJsonEnv(target: any, key: any) {
         }
     }
 }
+
+export function requiredIntEnv(target: any, key: any) {
+    if (!process.env[key]) {
+        console.error('Config', key + 'not found, terminating process.');
+        process.exit(1);
+    } else {
+        target[key] = parseInt(process.env[key]!);
+    }
+}
