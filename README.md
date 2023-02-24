@@ -14,11 +14,11 @@
 ## Introduction
 Use decorators to pull in configuration data from environment variables or volume mounts. Use the "fail fast" principle to ensure that all required variables are present before the application starts.
 
-Adding the `@required` decorator to a variable `HOST_URL` will do the following:
+Adding the `@requiredEnv` or `@optionalEnv` decorator to a variable `HOST_URL` will do the following:
 * If `process.env.HOST_URL` is defined, use that value
-* If a volume mount is present at `/etc/config/env`, use that value
-* If a volume mount is present at `/etc/config/sec`, use that value
-* If none of the above are present, throw an error
+* If a volume mount is present at `/etc/config/env/HOST_URL`, use that value
+* If a volume mount is present at `/etc/config/sec/HOST_URL`, use that value
+* For `@requiredEnv`, if none of the above are present, throw an error
 
 ## Installation
 - NPM
@@ -33,10 +33,11 @@ ENVIRONMENT_NAME=development
 ```
 ### Parsed Config Variables:
 ```typescript
-import {required} from '@hypercolor/envconfig';
+import {requiredEnv} from '@hypercolor/envconfig';
 
 export class ConfigVariables {
-    @required() public ENVIRONMENT_NAME: string;
+  @requiredEnv() public ENVIRONMENT_NAME: string;
+  @optionalEnv() public DEBUG?: string;
 }
 
 ```
