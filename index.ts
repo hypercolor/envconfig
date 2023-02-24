@@ -15,7 +15,14 @@ function loadConfig(key: string) {
     }
 }
 
-export function required(target: any, key: any) {
+export function optionalEnv(target: any, key: any) {
+    const value = loadConfig(key);
+    if (!!value) {
+        target[key] = value || '';
+    }
+}
+
+export function requiredEnv(target: any, key: any) {
     const value = loadConfig(key);
     if (!value && process.env.TEST !== 'true') {
         console.log("Config: ", key + " environment variable not found, terminating server...");
@@ -24,3 +31,4 @@ export function required(target: any, key: any) {
         target[key] = value || '';
     }
 }
+
