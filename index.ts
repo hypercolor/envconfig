@@ -44,6 +44,7 @@ export function requiredJsonEnv(target: any, key: any) {
             target[key] = JSON.parse(process.env[key]!);
         } catch (err) {
             console.error('Error parsing JSON env for ' + key + ': ', err);
+            console.error('Tried to parse: ', value);
             process.exit(1)
         }
     }
