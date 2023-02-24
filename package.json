@@ -1,6 +1,6 @@
 {
   "name": "@hypercolor/envconfig",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Use decorators to pull in configuration data from environment variables or volume mounts.",
   "main": "index.js",
   "types": "index.d.ts",
