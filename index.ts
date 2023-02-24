@@ -25,10 +25,25 @@ export function optionalEnv(target: any, key: any) {
 export function requiredEnv(target: any, key: any) {
     const value = loadConfig(key);
     if (!value && process.env.TEST !== 'true') {
-        console.log("Config: ", key + " environment variable not found, terminating server...");
+        console.error('Config', key + 'not found, terminating process.');
         process.exit(1);
     } else {
         target[key] = value || '';
     }
 }
 
+
+
+function requiredJsonEnv(target: any, key: any) {
+    if (!process.env[key]) {
+        console.error('Config', key + 'not found, terminating process.');
+        process.exit(1);
+    } else {
+        try {
+            target[key] = JSON.parse(process.env[key]!);
+        } catch (err) {
+            console.error('Error parsing JSON env for ' + key + ': ', err);
+            process.exit(1)
+        }
+    }
+}

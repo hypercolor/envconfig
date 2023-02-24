@@ -27,16 +27,13 @@ Adding the `@requiredEnv` or `@optionalEnv` decorator to a variable `HOST_URL` w
     - `yarn add @hypercolor/envconfig`
 
 ## Usage
-### `.env` file:
-``` bash
-ENVIRONMENT_NAME=development
-```
-### Parsed Config Variables:
+
 ```typescript
 import {requiredEnv} from '@hypercolor/envconfig';
 
 export class ConfigVariables {
   @requiredEnv() public ENVIRONMENT_NAME: string;
+  @requiredJsonEnv() public SOME_PRIVATE_KEY_JSON: IPrivateKeyJson;
   @optionalEnv() public DEBUG?: string;
 }
 

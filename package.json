@@ -1,7 +1,7 @@
 {
   "name": "@hypercolor/envconfig",
-  "version": "1.0.1",
-  "description": "This is a tool used by the Hypercolor team for parsing and annoting environment variables into a shared module.",
+  "version": "1.0.2",
+  "description": "Use decorators to pull in configuration data from environment variables or volume mounts.",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
