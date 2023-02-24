@@ -18,14 +18,14 @@ function loadConfig(key: string) {
 export function optionalEnv(target: any, key: any) {
     const value = loadConfig(key);
     if (!!value) {
-        target[key] = value || '';
+        target[key] = value;
     }
 }
 
 export function requiredEnv(target: any, key: any) {
     const value = loadConfig(key);
     if (!value && process.env.TEST !== 'true') {
-        console.error('Config', key + 'not found, terminating process.');
+        console.error('Config', key + ' not found, terminating process.');
         process.exit(1);
     } else {
         target[key] = value || '';
@@ -35,8 +35,9 @@ export function requiredEnv(target: any, key: any) {
 
 
 export function requiredJsonEnv(target: any, key: any) {
-    if (!process.env[key]) {
-        console.error('Config', key + 'not found, terminating process.');
+    const value = loadConfig(key);
+    if (!value && process.env.TEST !== 'true') {
+        console.error('Config', key + ' not found, terminating process.');
         process.exit(1);
     } else {
         try {
@@ -49,8 +50,9 @@ export function requiredJsonEnv(target: any, key: any) {
 }
 
 export function requiredIntEnv(target: any, key: any) {
-    if (!process.env[key]) {
-        console.error('Config', key + 'not found, terminating process.');
+    const value = loadConfig(key);
+    if (!value && process.env.TEST !== 'true') {
+        console.error('Config', key + ' not found, terminating process.');
         process.exit(1);
     } else {
         target[key] = parseInt(process.env[key]!);
