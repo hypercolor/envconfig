@@ -36,12 +36,12 @@ export function requiredEnv(target: any, key: any) {
 
 export function requiredJsonEnv(target: any, key: any) {
     const value = loadConfig(key);
-    if (!value && process.env.TEST !== 'true') {
+    if (!value) {
         console.error('Config', key + ' not found, terminating process.');
         process.exit(1);
     } else {
         try {
-            target[key] = JSON.parse(process.env[key]!);
+            target[key] = JSON.parse(value);
         } catch (err) {
             console.error('Error parsing JSON env for ' + key + ': ', err);
             console.error('Tried to parse: ', value);
@@ -52,10 +52,10 @@ export function requiredJsonEnv(target: any, key: any) {
 
 export function requiredIntEnv(target: any, key: any) {
     const value = loadConfig(key);
-    if (!value && process.env.TEST !== 'true') {
+    if (!value) {
         console.error('Config', key + ' not found, terminating process.');
         process.exit(1);
     } else {
-        target[key] = parseInt(process.env[key]!);
+        target[key] = parseInt(value);
     }
 }
