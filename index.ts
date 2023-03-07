@@ -22,6 +22,11 @@ export function optionalEnv(target: any, key: any) {
     }
 }
 
+export function optionalBooleanEnv(target: any, key: any) {
+    const value = loadConfig(key);
+    target[key] = value === 'true';
+}
+
 export function requiredEnv(target: any, key: any) {
     const value = loadConfig(key);
     if (!value && process.env.TEST !== 'true') {
