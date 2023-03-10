@@ -15,6 +15,17 @@ function loadConfig(key: string) {
     }
 }
 
+export function optionalIntEnv(defaultValue: number) {
+    return function (target: any, key: string) {
+        const value = loadConfig(key);
+        if (!!value) {
+            target[key] = parseInt(value);
+        } else {
+            target[key] = defaultValue;
+        }
+    }
+}
+
 export function optionalEnv(target: any, key: any) {
     const value = loadConfig(key);
     if (!!value) {
