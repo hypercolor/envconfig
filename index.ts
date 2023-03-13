@@ -26,6 +26,17 @@ export function optionalIntEnv(defaultValue: number) {
     }
 }
 
+export function optionalStringEnv(defaultValue: number) {
+    return function (target: any, key: string) {
+        const value = loadConfig(key);
+        if (!!value) {
+            target[key] = value;
+        } else {
+            target[key] = defaultValue;
+        }
+    }
+}
+
 export function optionalEnv(target: any, key: any) {
     const value = loadConfig(key);
     if (!!value) {
