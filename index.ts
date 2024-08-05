@@ -53,6 +53,7 @@ export function requiredEnv(target: any, key: any) {
     const value = loadConfig(key);
     if (!value && process.env.TEST !== 'true') {
         console.error('Config', key + ' not found, terminating process.');
+        console.trace();
         process.exit(1);
     } else {
         target[key] = value || '';
@@ -65,6 +66,7 @@ export function requiredJsonEnv(target: any, key: any) {
     const value = loadConfig(key);
     if (!value) {
         console.error('Config', key + ' not found, terminating process.');
+        console.trace();
         process.exit(1);
     } else {
         try {
@@ -81,6 +83,7 @@ export function requiredIntEnv(target: any, key: any) {
     const value = loadConfig(key);
     if (!value) {
         console.error('Config', key + ' not found, terminating process.');
+        console.trace();
         process.exit(1);
     } else {
         target[key] = parseInt(value);
